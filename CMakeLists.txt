@@ -15,19 +15,19 @@ set(LIB_SOURCE_FILES
         
 add_library(url_parse_std_lib STATIC ${LIB_SOURCE_FILES})
 
-add_executable(prog project/src/main.c)
+add_executable(prog.out project/src/main.c)
 
-target_link_libraries(prog url_parse_std_lib)
+target_link_libraries(prog.out url_parse_std_lib)
 
 # sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
 find_package(GTest REQUIRED)
 # adds the gtest include directory
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(tests project/src/tests.cpp)
+add_executable(tests.out project/src/tests.cpp)
 
 # links gtest
-target_link_libraries(tests ${GTEST_LIBRARIES})
-target_link_libraries(tests pthread)
-target_link_libraries(tests gmock)
-target_link_libraries(tests url_parse_std_lib)
+target_link_libraries(tests.out ${GTEST_LIBRARIES})
+target_link_libraries(tests.out pthread)
+target_link_libraries(tests.out gmock)
+target_link_libraries(tests.out url_parse_std_lib)
