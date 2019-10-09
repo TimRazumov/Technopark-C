@@ -4,9 +4,16 @@
 #include "query_info.h"
 
 
-
-
-TEST(QueryInfo, xur) {
+TEST(QueryInfo, Create) {
+    QueryInfo* query_info = create_query_info(NULL);
+    if (query_info) {
+        GTEST_FAIL() << " Information structure should not be created";
+    }
+    query_info = create_query_info("mail.ru");
+    if (!query_info) {
+        GTEST_FAIL() << " Information structure must be created";
+    }
+    free_query_info(query_info);
     EXPECT_EQ(64, 64);
     //char* url = "a.b.c.d.e.d";
     //QueryInfo* query_info = create_query_info(url);

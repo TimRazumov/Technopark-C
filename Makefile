@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/timofey/TechnoPark/Tekhnopark-C
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named study_std_lib
+# Target rules for targets named url_parse_std_lib
 
 # Build rule for target.
-study_std_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 study_std_lib
-.PHONY : study_std_lib
+url_parse_std_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 url_parse_std_lib
+.PHONY : url_parse_std_lib
 
 # fast build rule for target.
-study_std_lib/fast:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/build
-.PHONY : study_std_lib/fast
+url_parse_std_lib/fast:
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/build
+.PHONY : url_parse_std_lib/fast
 
 #=============================================================================
 # Target rules for targets named tests
@@ -155,7 +155,7 @@ project/src/main.o: project/src/main.c.o
 
 # target to build an object file
 project/src/main.c.o:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/main.c.o
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/main.c.o
 	$(MAKE) -f CMakeFiles/prog.dir/build.make CMakeFiles/prog.dir/project/src/main.c.o
 .PHONY : project/src/main.c.o
 
@@ -165,7 +165,7 @@ project/src/main.i: project/src/main.c.i
 
 # target to preprocess a source file
 project/src/main.c.i:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/main.c.i
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/main.c.i
 	$(MAKE) -f CMakeFiles/prog.dir/build.make CMakeFiles/prog.dir/project/src/main.c.i
 .PHONY : project/src/main.c.i
 
@@ -175,7 +175,7 @@ project/src/main.s: project/src/main.c.s
 
 # target to generate assembly for a file
 project/src/main.c.s:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/main.c.s
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/main.c.s
 	$(MAKE) -f CMakeFiles/prog.dir/build.make CMakeFiles/prog.dir/project/src/main.c.s
 .PHONY : project/src/main.c.s
 
@@ -185,7 +185,7 @@ project/src/query_info.o: project/src/query_info.c.o
 
 # target to build an object file
 project/src/query_info.c.o:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/query_info.c.o
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/query_info.c.o
 .PHONY : project/src/query_info.c.o
 
 project/src/query_info.i: project/src/query_info.c.i
@@ -194,7 +194,7 @@ project/src/query_info.i: project/src/query_info.c.i
 
 # target to preprocess a source file
 project/src/query_info.c.i:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/query_info.c.i
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/query_info.c.i
 .PHONY : project/src/query_info.c.i
 
 project/src/query_info.s: project/src/query_info.c.s
@@ -203,7 +203,7 @@ project/src/query_info.s: project/src/query_info.c.s
 
 # target to generate assembly for a file
 project/src/query_info.c.s:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/query_info.c.s
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/query_info.c.s
 .PHONY : project/src/query_info.c.s
 
 project/src/str.o: project/src/str.c.o
@@ -212,7 +212,7 @@ project/src/str.o: project/src/str.c.o
 
 # target to build an object file
 project/src/str.c.o:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/str.c.o
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/str.c.o
 .PHONY : project/src/str.c.o
 
 project/src/str.i: project/src/str.c.i
@@ -221,7 +221,7 @@ project/src/str.i: project/src/str.c.i
 
 # target to preprocess a source file
 project/src/str.c.i:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/str.c.i
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/str.c.i
 .PHONY : project/src/str.c.i
 
 project/src/str.s: project/src/str.c.s
@@ -230,7 +230,7 @@ project/src/str.s: project/src/str.c.s
 
 # target to generate assembly for a file
 project/src/str.c.s:
-	$(MAKE) -f CMakeFiles/study_std_lib.dir/build.make CMakeFiles/study_std_lib.dir/project/src/str.c.s
+	$(MAKE) -f CMakeFiles/url_parse_std_lib.dir/build.make CMakeFiles/url_parse_std_lib.dir/project/src/str.c.s
 .PHONY : project/src/str.c.s
 
 project/src/tests.o: project/src/tests.cpp.o
@@ -266,9 +266,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... study_std_lib"
+	@echo "... edit_cache"
+	@echo "... url_parse_std_lib"
 	@echo "... tests"
 	@echo "... prog"
 	@echo "... project/src/main.o"

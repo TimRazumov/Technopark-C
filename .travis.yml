@@ -1,0 +1,26 @@
+dist:     xenial
+sudo:     required
+
+language: c
+
+os: linux
+
+compiler: gcc
+
+install:
+    - sudo apt-get update
+    - sudo apt-get install libstdc++6
+    - sudo apt-get install cmake
+    # Google tests
+    - sudo apt-get install libgtest-dev
+    - cd /usr/src/gtest
+    - sudo cmake .
+    - sudo make
+    - sudo cp *.a /usr/lib
+
+script:
+    - cd /home/travis/build/gavroman/tp_cpp
+    - ./linters/run.sh
+    - cmake .
+    - make
+    - ./gtests.out

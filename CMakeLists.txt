@@ -6,17 +6,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x -Wall -Wextra -Werror --pedantic")
 
 include_directories(project/include)
+include_directories(project/src)
 
 set(LIB_SOURCE_FILES
         project/src/main.c
         project/src/str.c
         project/src/query_info.c)
         
-add_library(study_std_lib STATIC ${LIB_SOURCE_FILES})
+add_library(url_parse_std_lib STATIC ${LIB_SOURCE_FILES})
 
 add_executable(prog project/src/main.c)
 
-target_link_libraries(prog study_std_lib)
+target_link_libraries(prog url_parse_std_lib)
 
 # sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
 find_package(GTest REQUIRED)
@@ -29,4 +30,4 @@ add_executable(tests project/src/tests.cpp)
 target_link_libraries(tests ${GTEST_LIBRARIES})
 target_link_libraries(tests pthread)
 target_link_libraries(tests gmock)
-target_link_libraries(tests study_std_lib)
+target_link_libraries(tests url_parse_std_lib)

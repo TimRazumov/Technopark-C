@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/timofey/TechnoPark/Tekhnopark-C/project/src/main.c" "/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/prog.dir/project/src/main.c.o"
+  "/home/timofey/TechnoPark/Tekhnopark-C/project/src/main.c" "/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/url_parse_std_lib.dir/project/src/main.c.o"
+  "/home/timofey/TechnoPark/Tekhnopark-C/project/src/query_info.c" "/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/url_parse_std_lib.dir/project/src/query_info.c.o"
+  "/home/timofey/TechnoPark/Tekhnopark-C/project/src/str.c" "/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/url_parse_std_lib.dir/project/src/str.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -16,7 +18,6 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/url_parse_std_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

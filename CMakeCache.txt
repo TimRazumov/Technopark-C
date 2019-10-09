@@ -211,6 +211,9 @@ Lecture2_SOURCE_DIR:STATIC=/home/timofey/TechnoPark/Tekhnopark-C
 //Dependencies for target
 study_std_lib_LIB_DEPENDS:STATIC=
 
+//Dependencies for target
+url_parse_std_lib_LIB_DEPENDS:STATIC=
+
 
 ########################
 # INTERNAL cache entries

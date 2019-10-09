@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++0x -Wall -Wextra -Werror --pedantic   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/timofey/TechnoPark/Tekhnopark-C/project/include 
+CXX_INCLUDES = -I/home/timofey/TechnoPark/Tekhnopark-C/project/include -I/home/timofey/TechnoPark/Tekhnopark-C/project/src 
 

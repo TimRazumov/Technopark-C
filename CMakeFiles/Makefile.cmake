@@ -50,7 +50,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/study_std_lib.dir/DependInfo.cmake"
+  "CMakeFiles/url_parse_std_lib.dir/DependInfo.cmake"
   "CMakeFiles/tests.dir/DependInfo.cmake"
   "CMakeFiles/prog.dir/DependInfo.cmake"
   )
