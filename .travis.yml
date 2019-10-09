@@ -19,8 +19,7 @@ install:
     - sudo cp *.a /usr/lib
 
 script:
-    - ls
-    - cd /home/travis/build/gavroman/tp_cpp
+    - cd /home/travis/build/TimRazumov/Tekhnopark-C
     - ./linters/run.sh
     - cmake .
     - make
