@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.8)
+project(HW1)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++0x -Wall -Wextra -Werror --pedantic")
+
+include_directories(project/include)
+
+set(LIB_SOURCE_FILES
+        project/src/main.c
+        project/src/str.c
+        project/src/query_info.c)
+        
+add_library(study_std_lib STATIC ${LIB_SOURCE_FILES})
+
+add_executable(prog project/src/main.c)
+
+target_link_libraries(prog study_std_lib)
+
+# sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
+find_package(GTest REQUIRED)
+# adds the gtest include directory
+include_directories(${GTEST_INCLUDE_DIRS})
+
+add_executable(tests project/src/tests.cpp)
+
+# links gtest
+target_link_libraries(tests ${GTEST_LIBRARIES})
+target_link_libraries(tests pthread)
+target_link_libraries(tests gmock)
+target_link_libraries(tests study_std_lib)

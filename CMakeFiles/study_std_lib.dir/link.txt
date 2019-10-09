@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstudy_std_lib.a  CMakeFiles/study_std_lib.dir/project/src/main.c.o CMakeFiles/study_std_lib.dir/project/src/str.c.o CMakeFiles/study_std_lib.dir/project/src/query_info.c.o
+/usr/bin/ranlib libstudy_std_lib.a

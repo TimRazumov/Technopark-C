@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/timofey/TechnoPark/Tekhnopark-C/project/src/tests.cpp
+gmock/gmock.h
+-
+gtest/gtest.h
+-
+query_info.h
+/home/timofey/TechnoPark/Tekhnopark-C/project/src/query_info.h
+
+project/include/query_info.h
+stddef.h
+-
+str.h
+project/include/str.h
+
+project/include/str.h
+stddef.h
+-
+
