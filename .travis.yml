@@ -19,6 +19,7 @@ install:
     - sudo cp *.a /usr/lib
 
 script:
+    - ls
     - cd /home/travis/build/gavroman/tp_cpp
     - ./linters/run.sh
     - cmake .
