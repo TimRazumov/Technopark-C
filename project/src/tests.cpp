@@ -1,4 +1,3 @@
-//#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 
@@ -27,9 +26,6 @@ TEST(QueryInfo, create_query_info) {
 static int RunProtocol(const char* url, const char* protocol) {
     int res = OK;
     QueryInfo* query_info = create_query_info(url);
-    if (!query_info) {
-        res = BAD_ALLOC;
-    }
     if (strcmp(query_info->protocol->str, protocol)) {
         res = WRONG_ANSWER;
     }
@@ -80,24 +76,24 @@ TEST(String, create_str) {
     EXPECT_EQ(free_str(str), OK) << " Structure not cleaned";
 }
 
-/*TEST(String, split_str) {
-    
-}*/
-
 TEST(String, swap_str) {
     String* str1 = create_str_from_c_str("hello1");
     String* str2 = create_str_from_c_str("hello2");
     String* str3 = create_str_from_c_str("hello3");
     swap_str(&str1, &str2);  // str1 - hello2, str2 - hello1
-    if (strcmp(str1->str, "hello2") || strcmp(str2->str, "hello1")) {
-        // GTEST_FAIL() << " String should not be created";
+    swap_str(&str2, &str3);  // str2 - hello3, str3 - hello1
+    swap_str(&str1, &str3);  // str1 - hello1, str3 - hello2
+    if (strcmp(str1->str, "hello1") || strcmp(str2->str, "hello3")
+        || strcmp(str3->str, "hello2")) {
+        GTEST_FAIL() << " String should not be created";
     }
-    free_str(str1)
-    free_str(str2)
-    free_str(str3)
+    free_str(str1);
+    free_str(str2);
+    free_str(str3);
 }
 
-// 
+TEST(String, split_str) {
+}
 
 int main(int argc, char** argv) {
   // The following line must be executed to initialize Google Mock
