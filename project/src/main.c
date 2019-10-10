@@ -11,7 +11,7 @@ int main(int argc, const char** argv) {
     }
     const char* url = argv[1];
     QueryInfo* query_info = create_query_info(url);
-    print(query_info);
+    print_query_info(query_info);
     free_query_info(query_info);
     return 0;
 }

@@ -24,6 +24,6 @@ typedef struct {
 
 QueryInfo* create_query_info(const char* url);
 int free_query_info(QueryInfo* query_info);
-void print(const QueryInfo* query_info);
+void print_query_info(const QueryInfo* query_info);
 
 #endif  // PROJECT_INCLUDE_QUERY_INFO_H_

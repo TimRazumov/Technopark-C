@@ -7,7 +7,7 @@ extern "C" {
 }
 
 
-TEST(QueryInfo, Create) {
+TEST(QueryInfo, CreateDelete) {
     QueryInfo* query_info = create_query_info(NULL);
     if (query_info) {
         GTEST_FAIL() << " Information structure should not be created";
@@ -17,7 +17,28 @@ TEST(QueryInfo, Create) {
         GTEST_FAIL() << " Information structure must be created";
     }
     free_query_info(query_info);
-    EXPECT_EQ(64, 64);
+    /*try {
+        print_query_info(query_info);
+    } catch (...) {
+        
+    }*/
+    // EXPECT_EQ(64, 64);
+    //char* url = "a.b.c.d.e.d";
+    //QueryInfo* query_info = create_query_info(url);
+    //GTEST_FAIL() << " DArray should throw an exception";
+    
+}
+
+TEST(QueryInfo, Protocol) {
+    QueryInfo* query_info = create_query_info("https://mail.ru");
+    if (!query_info) {
+        GTEST_FAIL() << " Information structure must be created";
+    }
+    if (strcmp(query_info->protocol->str, "https")) {
+        GTEST_FAIL() << " Lines should be equal";
+    }
+    // EXPECT_EQ;
+    free_query_info(query_info);
     //char* url = "a.b.c.d.e.d";
     //QueryInfo* query_info = create_query_info(url);
     //GTEST_FAIL() << " DArray should throw an exception";

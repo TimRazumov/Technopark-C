@@ -71,7 +71,7 @@ int free_query_info(QueryInfo* query_info) {
     return 0;
 }
 
-void print(const QueryInfo* query_info) {
+void print_query_info(const QueryInfo* query_info) {
     if (query_info->protocol) {
         printf("%s%s", query_info->protocol->str, PROTOCOL_SEP);
     }
