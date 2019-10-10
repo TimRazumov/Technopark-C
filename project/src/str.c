@@ -49,7 +49,7 @@ String* split_str(String* first_part, const char* separator) {
     if (!first_part || !separator) {
         return NULL;
     }
-    char* tmp = strstr(first_part->str, separator);  // нашли место которое возвращаем
+    char* tmp = strstr(first_part->str, separator);
     if (!tmp) {
         return NULL;
     }

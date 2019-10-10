@@ -17,10 +17,13 @@ install:
     - sudo cmake .
     - sudo make
     - sudo cp *.a /usr/lib
+    - cd -
 
 script:
-    - cd /home/travis/build/TimRazumov/Tekhnopark-C
     - ./linters/run.sh
     - cmake .
     - make
-    - ./tests.out
+    - valgrind --tool=memcheck --leak-check=full --leak-resolution=med  --track-origins=yes ./tests.out
+
+after_script:
+    - make clean
