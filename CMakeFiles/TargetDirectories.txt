@@ -1,5 +1,0 @@
-/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/rebuild_cache.dir
-/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/edit_cache.dir
-/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/url_parse_std_lib.dir
-/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/tests.dir
-/home/timofey/TechnoPark/Tekhnopark-C/CMakeFiles/prog.dir

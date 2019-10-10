@@ -29,5 +29,5 @@ add_executable(tests.out project/src/tests.cpp)
 # links gtest
 target_link_libraries(tests.out ${GTEST_LIBRARIES})
 target_link_libraries(tests.out pthread)
-target_link_libraries(tests.out gmock)
+#target_link_libraries(tests.out gmock)
 target_link_libraries(tests.out url_parse_std_lib)

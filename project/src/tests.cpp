@@ -1,7 +1,10 @@
-#include <gmock/gmock.h>
+//#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "query_info.h"
+
+extern "C" {
+    #include "query_info.h"
+}
 
 
 TEST(QueryInfo, Create) {

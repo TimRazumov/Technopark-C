@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/prog.dir/project/src/main.c.o  -o prog liburl_parse_std_lib.a 

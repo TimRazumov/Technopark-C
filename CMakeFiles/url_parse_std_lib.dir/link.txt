@@ -1,2 +1,0 @@
-/usr/bin/ar qc liburl_parse_std_lib.a  CMakeFiles/url_parse_std_lib.dir/project/src/main.c.o CMakeFiles/url_parse_std_lib.dir/project/src/str.c.o CMakeFiles/url_parse_std_lib.dir/project/src/query_info.c.o
-/usr/bin/ranlib liburl_parse_std_lib.a
