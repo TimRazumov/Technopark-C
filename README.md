@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/TimRazumov/Tekhnopark-C.svg?branch=making-hw-1)](https://travis-ci.com/TimRazumov/Tekhnopark-C)
+
 # Tekhnopark-C
 HW1 at the course of the technopark C/C++
 
