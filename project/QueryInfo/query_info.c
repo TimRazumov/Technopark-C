@@ -40,12 +40,13 @@ QueryInfo* create_query_info(const char* url) {
 }
 
 size_t num_domains(const String* url) {
-    if (!url) {
+    size_t len_url = 0;
+    if (!url || !(len_url = strlen(url->str))) {
         return 0;
     }
     size_t num = 1;
-    for (size_t i = 0, len = strlen(url->str); i < len; i++) {
-        if (url->str[i] == *DOMAINS_SEP && i < len - 1) {
+    for (size_t i = 0; i < len_url - 1; i++) {
+        if (url->str[i] == *DOMAINS_SEP) {
             num++;
         }
     }
@@ -68,7 +69,7 @@ int free_query_info(QueryInfo* query_info) {
     return 0;
 }
 
-void print_query_info(const QueryInfo* query_info, FILE* output) {
+/*void print_query_info(const QueryInfo* query_info, FILE* output) {
     if (!query_info || !output) {
         return;
     }
@@ -94,4 +95,4 @@ void print_query_info(const QueryInfo* query_info, FILE* output) {
     if (query_info->part) {
         fprintf(output, "%s%s", PART_SEP, query_info->part->str);
     }
-}
+}*/

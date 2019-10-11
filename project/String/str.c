@@ -9,7 +9,6 @@ String* create_str(const size_t num_byte) {
     }
     String* str = (String*)calloc(1, sizeof(String));
     if (!str) {
-        free_str(str);
         return NULL;
     }
     str->size = num_byte;
@@ -30,9 +29,6 @@ String* create_str_from_c_str(const char* c_str) {
         return NULL;
     }
     memcpy(str->str, c_str, str->size);
-    /*for (size_t i = 0; i < str->size; i++) {
-        str->str[i] = c_str[i];
-    }*/
     return str;
 }
 
@@ -47,14 +43,14 @@ int swap_str(String** l, String** r) {
 }
 
 String* split_str(String* first_part, const char* separator) {
-    if (!first_part || !separator || *separator == '\0') {
+    size_t sep_len = 0;
+    if (!first_part || !separator || !(sep_len = strlen(separator))) {
         return NULL;
     }
     char* tmp = strstr(first_part->str, separator);
     if (!tmp) {
         return NULL;
     }
-    size_t sep_len = strlen(separator);
     tmp += sep_len;
     size_t len = strlen(tmp) + 1;  // + нулевой байт
     String* second_part = create_str(len);

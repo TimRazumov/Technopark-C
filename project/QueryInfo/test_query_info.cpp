@@ -47,7 +47,7 @@ TEST(QueryInfo, num_domains) {
     EXPECT_EQ(num_domains(str_url), 5) << " Wrong answer";
     free_str(str_url);
     str_url = create_str_from_c_str("");
-    EXPECT_EQ(num_domains(str_url), 1) << " Wrong answer";
+    EXPECT_EQ(num_domains(str_url), 0) << " Wrong answer";
     free_str(str_url);
     str_url = create_str_from_c_str("a.b.c");
     EXPECT_EQ(num_domains(str_url), 3) << " Wrong answer";

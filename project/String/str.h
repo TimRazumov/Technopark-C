@@ -1,5 +1,5 @@
-#ifndef PROJECT_INCLUDE_STR_H_
-#define PROJECT_INCLUDE_STR_H_
+#ifndef PROJECT_STRING_STR_H_
+#define PROJECT_STRING_STR_H_
 
 #include <stddef.h>
 
@@ -14,4 +14,4 @@ int swap_str(String** l, String** r);
 String* split_str(String* str, const char* separator);
 int free_str(String* str);
 
-#endif  // PROJECT_INCLUDE_STR_H_
+#endif  // PROJECT_STRING_STR_H_

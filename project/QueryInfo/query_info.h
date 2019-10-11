@@ -1,5 +1,5 @@
-#ifndef PROJECT_INCLUDE_QUERY_INFO_H_
-#define PROJECT_INCLUDE_QUERY_INFO_H_
+#ifndef PROJECT_QUERYINFO_QUERY_INFO_H_
+#define PROJECT_QUERYINFO_QUERY_INFO_H_
 
 #include <stddef.h>
 #include "str.h"
@@ -24,6 +24,6 @@ typedef struct {
 QueryInfo* create_query_info(const char* url);
 size_t num_domains(const String* url);
 int free_query_info(QueryInfo* query_info);
-void print_query_info(const QueryInfo* query_info, FILE* output);
+// void print_query_info(const QueryInfo* query_info, FILE* output);
 
-#endif  // PROJECT_INCLUDE_QUERY_INFO_H_
+#endif  // PROJECT_QUERYINFO_QUERY_INFO_H_
