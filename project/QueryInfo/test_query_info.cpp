@@ -84,6 +84,7 @@ TEST(QueryInfo, print_query_info) {
     }
     free_query_info(query_info);
     free_str(str);
+    free_str(str_res);
     fclose(f);
 }
 
