@@ -2,6 +2,7 @@
 #define PROJECT_QUERYINFO_QUERY_INFO_H_
 
 #include <stddef.h>
+#include <stdio.h>
 #include "str.h"
 
 #define PROTOCOL_SEP "://"
