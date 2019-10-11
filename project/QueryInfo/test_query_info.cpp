@@ -57,9 +57,14 @@ TEST(QueryInfo, print_query_info) {
         return;
     }
     String* str = create_str_from_c_str("https://aaa.bbb.ccc:8080/path1/path2/doc.html?a=1&b=2#part100");
+    if (!str) {
+        fclose(f);
+        GTEST_FAIL() << " Bad alloc";
+        return;
+    }
     QueryInfo* query_info = create_query_info(str->str);
-    if (!query_info || !str) {
-        free_query_info(query_info);
+    if (!query_info) {
+        fclose(f);
         free_str(str);
         GTEST_FAIL() << " Bad alloc";
         return;
