@@ -23,7 +23,7 @@ typedef struct {
 
 QueryInfo* create_query_info(const char* url);
 size_t num_domains(const String* url);
-int free_query_info(QueryInfo* query_info);
-// void print_query_info(const QueryInfo* query_info, FILE* output);
+size_t free_query_info(QueryInfo* query_info);
+size_t print_query_info(const QueryInfo* query_info, FILE* output);
 
 #endif  // PROJECT_QUERYINFO_QUERY_INFO_H_

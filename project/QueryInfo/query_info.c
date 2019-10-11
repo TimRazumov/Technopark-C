@@ -4,10 +4,17 @@
 #include "query_info.h"
 
 QueryInfo* create_query_info(const char* url) {
+    if (!url) {
+        return NULL;
+    }
     QueryInfo* query_info = (QueryInfo*)calloc(1, sizeof(QueryInfo));
+    if (!query_info) {
+        return NULL;
+    }
     String* str_url = create_str_from_c_str(url);
-    if (!query_info || !url || !str_url) {
-        goto exit;
+    if (!str_url) {
+        free_query_info(query_info);
+        return NULL;
     }
     query_info->protocol = split_str(str_url, PROTOCOL_SEP);
     if (query_info->protocol) {
@@ -26,17 +33,15 @@ QueryInfo* create_query_info(const char* url) {
     query_info->num_domains = num_domains(str_url);
     query_info->domains = (String**)calloc(query_info->num_domains, sizeof(String*));
     if (!query_info->domains) {
-        goto exit;
+        free_query_info(query_info);
+        free_str(str_url);
+        return NULL;
     }
     query_info->domains[0] = str_url;
     for (size_t i = 1; i < query_info->num_domains; i++) {
         query_info->domains[i] = split_str(query_info->domains[i - 1], DOMAINS_SEP);
     }
     return query_info;
-    exit:
-    free_query_info(query_info);
-    free_str(str_url);
-    return NULL;
 }
 
 size_t num_domains(const String* url) {
@@ -53,9 +58,9 @@ size_t num_domains(const String* url) {
     return num;
 }
 
-int free_query_info(QueryInfo* query_info) {
+size_t free_query_info(QueryInfo* query_info) {
     if (!query_info) {
-        return -1;
+        return EXIT_FAILURE;
     }
     free_str(query_info->protocol);
     for (size_t i = 0; i < query_info->num_domains; i++) {
@@ -66,12 +71,12 @@ int free_query_info(QueryInfo* query_info) {
     free_str(query_info->query_string);
     free_str(query_info->part);
     free(query_info);
-    return 0;
+    return EXIT_SUCCESS;
 }
 
-/*void print_query_info(const QueryInfo* query_info, FILE* output) {
+size_t print_query_info(const QueryInfo* query_info, FILE* output) {
     if (!query_info || !output) {
-        return;
+        return EXIT_FAILURE;
     }
     if (!output) {
         output = stdout;
@@ -95,4 +100,5 @@ int free_query_info(QueryInfo* query_info) {
     if (query_info->part) {
         fprintf(output, "%s%s", PART_SEP, query_info->part->str);
     }
-}*/
+    return EXIT_SUCCESS;
+}

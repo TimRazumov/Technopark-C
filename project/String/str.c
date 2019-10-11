@@ -1,7 +1,7 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include "str.h"
+#include <string.h>
 
 String* create_str(const size_t num_byte) {
     if (!num_byte) {
@@ -32,14 +32,14 @@ String* create_str_from_c_str(const char* c_str) {
     return str;
 }
 
-int swap_str(String** l, String** r) {
+size_t swap_str(String** l, String** r) {
     if (!l || !r) {
-        return -1;
+        return EXIT_FAILURE;
     }
     String* tmp = *l;
     *l = *r;
     *r = tmp;
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 String* split_str(String* first_part, const char* separator) {
@@ -68,11 +68,11 @@ String* split_str(String* first_part, const char* separator) {
     return second_part;
 }
 
-int free_str(String* str) {
+size_t free_str(String* str) {
     if (!str) {
-        return -1;
+        return EXIT_FAILURE;
     }
     free(str->str);
     free(str);
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -10,8 +10,8 @@ typedef struct String {
 
 String* create_str(const size_t byte);
 String* create_str_from_c_str(const char* c_str);
-int swap_str(String** l, String** r);
+size_t swap_str(String** l, String** r);
 String* split_str(String* str, const char* separator);
-int free_str(String* str);
+size_t free_str(String* str);
 
 #endif  // PROJECT_STRING_STR_H_

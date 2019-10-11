@@ -4,26 +4,22 @@ extern "C" {
     #include "str.h"
 }
 
-#define OK 0
-#define NULL_PTR -1
-#define WRONG_ANSWER -2
-
 TEST(String, create_str) {
     String* str = create_str_from_c_str(NULL);
     if (str) {
         GTEST_FAIL() << " String should not be created";
     }
-    EXPECT_EQ(free_str(str), NULL_PTR) << " Attempt to clean empty structure";
+    EXPECT_EQ(free_str(str), EXIT_FAILURE) << " Attempt to clean empty structure";
     str = create_str_from_c_str("mail.ru");
     if (!str) {
         GTEST_FAIL() << " String must be created";
     }
-    EXPECT_EQ(free_str(str), OK) << " Structure not cleaned";
+    EXPECT_EQ(free_str(str), EXIT_SUCCESS) << " Structure not cleaned";
     str = create_str(10);
     if (!str) {
         GTEST_FAIL() << " String must be created";
     }
-    EXPECT_EQ(free_str(str), OK) << " Structure not cleaned";
+    EXPECT_EQ(free_str(str), EXIT_SUCCESS) << " Structure not cleaned";
 }
 
 TEST(String, swap_str) {
@@ -35,7 +31,7 @@ TEST(String, swap_str) {
     swap_str(&str1, &str3);  // str1 - hello1, str3 - hello2
     if (strcmp(str1->str, "hello1") || strcmp(str2->str, "hello3")
         || strcmp(str3->str, "hello2")) {
-        GTEST_FAIL() << " String should not be created";
+        GTEST_FAIL() << " Wrong answer";
     }
     free_str(str1);
     free_str(str2);
@@ -48,7 +44,7 @@ TEST(String, split_str) {
     String* str3 = split_str(str2, "###");
     if (strcmp(str1->str, "aaa") || strcmp(str2->str, "bbb")
         || strcmp(str3->str, "ccc")) {
-        GTEST_FAIL() << " String should not be created";
+        GTEST_FAIL() << " Wrong answer";
     }
     free_str(str1);
     free_str(str2);
