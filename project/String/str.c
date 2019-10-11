@@ -1,23 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
 #include "str.h"
 
-String* create_str(const size_t byte) {
+String* create_str(const size_t num_byte) {
+    if (!num_byte) {
+        return NULL;
+    }
     String* str = (String*)calloc(1, sizeof(String));
     if (!str) {
-        goto exit;
+        free_str(str);
+        return NULL;
     }
-    str->size = byte;
+    str->size = num_byte;
     str->str = (char*)calloc(str->size, sizeof(char));
     if (!str->str) {
-        goto exit;
+        free_str(str);
+        return NULL;
     }
     return str;
-    exit:
-    free_str(str);
-    return NULL;
 }
 
 String* create_str_from_c_str(const char* c_str) {
@@ -26,12 +27,12 @@ String* create_str_from_c_str(const char* c_str) {
     }
     String* str = create_str(strlen(c_str) + 1);  // + нулевой байт
     if (!str) {
-        free_str(str);
         return NULL;
     }
-    for (size_t i = 0; i < str->size; i++) {
+    memcpy(str->str, c_str, str->size);
+    /*for (size_t i = 0; i < str->size; i++) {
         str->str[i] = c_str[i];
-    }
+    }*/
     return str;
 }
 
@@ -46,7 +47,7 @@ int swap_str(String** l, String** r) {
 }
 
 String* split_str(String* first_part, const char* separator) {
-    if (!first_part || !separator) {
+    if (!first_part || !separator || *separator == '\0') {
         return NULL;
     }
     char* tmp = strstr(first_part->str, separator);

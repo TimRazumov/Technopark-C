@@ -1,22 +1,7 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-
 #include "query_info.h"
-
-
-size_t num_domains(String* url) {
-    if (!url) {
-        return 0;
-    }
-    size_t num = 1;
-    for (size_t i = 0, len = strlen(url->str); i < len; i++) {
-        if (url->str[i] == *DOMAINS_SEP && url->str[i + 1] != '\0') {
-            num++;
-        }
-    }
-    return num;
-}
 
 QueryInfo* create_query_info(const char* url) {
     QueryInfo* query_info = (QueryInfo*)calloc(1, sizeof(QueryInfo));
@@ -54,6 +39,18 @@ QueryInfo* create_query_info(const char* url) {
     return NULL;
 }
 
+size_t num_domains(const String* url) {
+    if (!url) {
+        return 0;
+    }
+    size_t num = 1;
+    for (size_t i = 0, len = strlen(url->str); i < len; i++) {
+        if (url->str[i] == *DOMAINS_SEP && i < len - 1) {
+            num++;
+        }
+    }
+    return num;
+}
 
 int free_query_info(QueryInfo* query_info) {
     if (!query_info) {
@@ -71,25 +68,30 @@ int free_query_info(QueryInfo* query_info) {
     return 0;
 }
 
-void print_query_info(const QueryInfo* query_info) {
+void print_query_info(const QueryInfo* query_info, FILE* output) {
+    if (!query_info || !output) {
+        return;
+    }
+    if (!output) {
+        output = stdout;
+    }
     if (query_info->protocol) {
-        printf("%s%s", query_info->protocol->str, PROTOCOL_SEP);
+        fprintf(output, "%s%s", query_info->protocol->str, PROTOCOL_SEP);
     }
     for (int i = 0; i < query_info->num_domains; i++) {
-        printf("%s", query_info->domains[i]->str);
+        fprintf(output, "%s", query_info->domains[i]->str);
         if (i < query_info->num_domains - 1) {
-            printf("%s", DOMAINS_SEP);
+            fprintf(output, "%s", DOMAINS_SEP);
         }
     }
-    printf("%s%zu", PORT_SEP, query_info->port);
+    fprintf(output, "%s%zu", PORT_SEP, query_info->port);
     if (query_info->doc_path) {
-        printf("%s%s", DOC_PATH_SEP, query_info->doc_path->str);
+        fprintf(output, "%s%s", DOC_PATH_SEP, query_info->doc_path->str);
     }
     if (query_info->query_string) {
-        printf("%s%s", QUERY_STRING_SEP, query_info->query_string->str);
+        fprintf(output, "%s%s", QUERY_STRING_SEP, query_info->query_string->str);
     }
     if (query_info->part) {
-        printf("%s%s", PART_SEP, query_info->part->str);
+        fprintf(output, "%s%s", PART_SEP, query_info->part->str);
     }
-    puts("");
 }

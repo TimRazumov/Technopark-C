@@ -11,7 +11,6 @@
 #define QUERY_STRING_SEP "?"
 #define PART_SEP "#"
 
-
 typedef struct {
     String* protocol;  // протокол подключения
     size_t num_domains;  // кол-во доменов
@@ -23,7 +22,8 @@ typedef struct {
 } QueryInfo;
 
 QueryInfo* create_query_info(const char* url);
+size_t num_domains(const String* url);
 int free_query_info(QueryInfo* query_info);
-void print_query_info(const QueryInfo* query_info);
+void print_query_info(const QueryInfo* query_info, FILE* output);
 
 #endif  // PROJECT_INCLUDE_QUERY_INFO_H_
