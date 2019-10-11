@@ -31,7 +31,7 @@ before_script:
 script:
     - cmake .
     - make
-    - valgrind --tool=memcheck --leak-check=full --show-leak-types = all --leak-resolution=med  --track-origins=yes ./tests.out
+    - valgrind --tool=memcheck --leak-check=full --leak-resolution=med  --track-origins=yes ./tests.out
 
 after_script:
     - lcov —capture —directory ./CMakeFiles/task_library.dir/project/src —output-file coverage.info
