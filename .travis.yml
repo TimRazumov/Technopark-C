@@ -20,11 +20,16 @@ install:
     - sudo cp *.a /usr/lib
     - cd -
 
-script:
-    - ./linters/run.sh
-    - cmake .
-    - make
-    - valgrind --tool=memcheck --leak-check=full --leak-resolution=med  --track-origins=yes ./tests.out
-
+jobs:
+    include:
+        - stage: Linters
+          script: ./linters/run.sh
+        - stage: Build
+          script: cmake .
+          script: make
+        - stage: Tests
+          script: ./tests.out
+        - stage: MemCheck
+          script: valgrind --tool=memcheck --leak-check=full --show-leak-types = all --leak-resolution=med  --track-origins=yes ./tests.out
 after_script:
     - make clean
