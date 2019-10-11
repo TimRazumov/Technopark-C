@@ -7,9 +7,14 @@ os: linux
 
 compiler: gcc
 
+env:
+  global:
+    - CODECOV_TOKEN="a659bbeb-783e-4906-8ca9-a66b83df66af"
+
 install:
     - sudo apt-get update
     - sudo apt-get install valgrind
+    - sudo apt-get install lcov
     - sudo apt-get install libstdc++6
     - sudo apt-get install cmake
     # Google tests
@@ -19,17 +24,16 @@ install:
     - sudo make
     - sudo cp *.a /usr/lib
     - cd -
+    
+before_script:
+    - ./linters/run.sh
 
-jobs:
-    include:
-        - stage: Linters
-          script: ./linters/run.sh
-        - stage: Build
-          script: cmake .
-          script: make
-        - stage: Tests
-          script: ./tests.out
-        - stage: MemCheck
-          script: valgrind --tool=memcheck --leak-check=full --show-leak-types = all --leak-resolution=med  --track-origins=yes ./tests.out
+script:
+    - cmake .
+    - make
+    -valgrind --tool=memcheck --leak-check=full --show-leak-types = all --leak-resolution=med  --track-origins=yes ./tests.out
+
 after_script:
+    - lcov —capture —directory ./CMakeFiles/task_library.dir/project/src —output-file coverage.info
+    - bash <(curl -s https://codecov.io/bash)
     - make clean
