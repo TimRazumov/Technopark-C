@@ -25,18 +25,18 @@ install:
     - sudo cp *.a /usr/lib
     - cd -
     
-before_script:
+before_script: 
     - ./linters/run.sh ||
-    travis_termitate 1;
+    travis_terminate 1
 
 script:
     - cmake .
     - make || 
-    travis_termitate 1;
+    travis_terminate 1;
     - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./test_str.out || 
-    travis_termitate 1;
+    travis_terminate 1;
     - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./test_query_info.out ||
-    travis_termitate 1;
+    travis_terminate 1;
 
 after_script:
     - lcov —capture —directory ./CMakeFiles/task_library.dir/project/src —output-file coverage.info
