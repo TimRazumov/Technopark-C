@@ -5,7 +5,7 @@
 #include "query_info.h"
 
 
-static size_t num_domains(String* url) {
+size_t num_domains(String* url) {
     if (!url) {
         return 0;
     }
