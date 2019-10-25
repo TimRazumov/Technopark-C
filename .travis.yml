@@ -1,0 +1,47 @@
+dist:     xenial
+sudo:     required
+
+language: c
+
+os: linux
+
+compiler: gcc
+
+env:
+  global:
+    - CODECOV_TOKEN="a659bbeb-783e-4906-8ca9-a66b83df66af"
+
+install:
+    - sudo apt-get update
+    - sudo apt-get install valgrind
+    - sudo apt-get install clang-format
+    - sudo apt-get install lcov
+    - sudo apt-get install libstdc++6
+    - sudo apt-get install cmake
+    # Google tests
+    - sudo apt-get install libgtest-dev
+    - cd /usr/src/gtest
+    - sudo cmake .
+    - sudo make
+    - sudo cp *.a /usr/lib
+    - cd -
+    
+before_script:
+    - cd project/String
+    - clang-format -i -style=Google *.h *.cpp *.c
+    - cd -
+    - cd project/QueryInfo
+    - clang-format -i -style=Google *.h *.cpp *.c
+    - cd -
+    - ./linters/run.sh || travis_terminate 1
+
+script:
+    - cmake .
+    - make || travis_terminate 1
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./test_substr.out || travis_terminate 1
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./test_parall_substr.out.out || travis_terminate 1
+
+after_script:
+    - lcov —capture —directory ./CMakeFiles/task_library.dir/project/src —output-file coverage.info
+    - bash <(curl -s https://codecov.io/bash)
+    - make clean
