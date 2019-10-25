@@ -27,10 +27,10 @@ install:
     - cd -
     
 before_script:
-    - cd project/String
+    - cd project/substr
     - clang-format -i -style=Google *.h *.cpp *.c
     - cd -
-    - cd project/QueryInfo
+    - cd project/parall_substr
     - clang-format -i -style=Google *.h *.cpp *.c
     - cd -
     - ./linters/run.sh || travis_terminate 1
