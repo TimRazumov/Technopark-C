@@ -18,7 +18,7 @@ add_library(_parall_substr STATIC ${LIB_PARALL_SUBSTR})
 set(LIB_SUBSTR
         project/substr/substr.c
         project/substr/test_substr.cpp)
-add_library(_substr STATIC ${LIB_SUBSTR})       
+add_library(_substr SHARED ${LIB_SUBSTR})       
 
 
 # sets GTEST_INCLUDE_DIRS and GTEST_LIBRARIES
