@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.com/TimRazumov/Tekhnopark-C.svg?branch=dev-hw-2)](https://travis-ci.com/TimRazumov/Tekhnopark-C)
 [![codecov](https://codecov.io/gh/TimRazumov/Tekhnopark-C/branch/dev-hw-2/graph/badge.svg)](https://codecov.io/gh/TimRazumov/Tekhnopark-C)
 # Tekhnopark-C
+
+### Условие задачи
+
 HW2 at the course of the technopark C/C++
 
 ИЗ2 посвящено приобретению навыков системной разработки на C и работе с внешними библиотеками. В качестве результата ИЗ2 ожидается:
@@ -12,6 +15,7 @@ HW2 at the course of the technopark C/C++
 
 Сравните и выведите в консоль время работы последовательного и параллельного поиска максимальной последовательности неповторяющихся символов в тексте с использованием нескольких процессов алгоритмов, каждый из которых выделяет в динамической памяти символьный массив размером 100 Мб.
 
+### Результаты
 
 Проведя 5 замеров времени на одних и тех же на тестах было найдено среднее время работы для последовательного и параллельного алгоритма:
 

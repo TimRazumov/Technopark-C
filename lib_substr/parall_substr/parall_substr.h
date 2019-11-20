@@ -1,7 +1,7 @@
 #ifndef LIB_SUBSTR_PARALL_SUBSTR_PARALL_SUBSTR_H_
 #define LIB_SUBSTR_PARALL_SUBSTR_PARALL_SUBSTR_H_
 
-#include <stddef.h>
+#include <stdio.h>
 #include "substr.h"
 
 chunk_info* merge_chunk_info(const chunk_info* const chunks, size_t num_chunks, FILE* const f);
