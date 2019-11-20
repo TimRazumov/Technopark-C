@@ -5,10 +5,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
 #include "substr.h"
-
-#define ALPHABET_SIZE 256
 
 chunk_info* get_substr_info(const char* const str) {
     size_t* count = (size_t*)calloc(ALPHABET_SIZE, sizeof(size_t));
@@ -30,10 +27,16 @@ chunk_info* get_substr_info(const char* const str) {
                 }
             }
         }
+        if (i == len - 1) {
+            chunk->max_r = len - lower_bound;
+        }  // правая граница
         size_t tmp = i - lower_bound + 1;
         if (tmp > chunk->max) {
             chunk->max = tmp;
             chunk->pos = lower_bound;
+            if (!lower_bound) {
+                chunk->max_l = tmp;
+            }  // левая граница
         }
     }
     free(count);
