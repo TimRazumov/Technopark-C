@@ -70,8 +70,12 @@ char* get_max_substr_without_repeat_from_file_parall(const char* const file_name
     size_t buff_size =  file_size / num_proc + file_size % num_proc;
     rewind(f);
     char* str = (char*)calloc(buff_size, sizeof(char));
+    if (!str) {
+        fclose(f);
+        return NULL;
+    }
     int file_pipes[2];
-    if (pipe(file_pipes) || !str) {
+    if (pipe(file_pipes)) {
         free(str);
         fclose(f);
         return NULL;
@@ -111,10 +115,15 @@ char* get_max_substr_without_repeat_from_file_parall(const char* const file_name
     for (size_t i = 0; i < num_proc; i++) {
         read(file_pipes[0], chunk + i, sizeof(chunk_info));
     }
-    qsort(chunk, num_proc, sizeof(chunk_info), (int(*) (const void *, const void *))comp_chunk_info);
+    qsort(chunk, num_proc, sizeof(chunk_info), (int(*) (const void*, const void*))comp_chunk_info);
     chunk_info* res_info = merge_chunk_info(chunk, num_proc, f);
     free(chunk);
     char* res = (char*)calloc(res_info->max + 1, sizeof(char));
+    if (!res) {
+        free(res_info);
+        fclose(f);
+        return NULL;
+    }
     fseek(f, res_info->global_pos + res_info->pos, SEEK_SET);
     fgets(res, res_info->max + 1, f);
     free(res_info);

@@ -21,7 +21,7 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # test
-add_executable(test.out test_lib_substr/test.cpp)
+add_executable(test.out lib_substr/test/test.cpp)
 
 # links gtest
 target_link_libraries(test.out ${GTEST_LIBRARIES})

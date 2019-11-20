@@ -13,9 +13,9 @@ if [ "${1}" == "--local" ]; then
 else
 	CPPCHECK="./linters/cppcheck/cppcheck"
 fi
-${CPPCHECK} project --enable=all --error-exitcode=1 -I project/parall_substr -I project/substr --suppress=missingIncludeSystem # --check-config
+${CPPCHECK} lib_substr --enable=all --error-exitcode=1 -I lib_substr/parall_substr -I lib_substr/substr -I lib_substr/test --suppress=missingIncludeSystem # --check-config
 
 print_header "RUN cpplint.py"
-python2.7 ./linters/cpplint/cpplint.py --extensions=c,cpp project/parall_substr/* project/substr/*
+python2.7 ./linters/cpplint/cpplint.py --extensions=c,cpp lib_substr/parall_substr/* lib_substr/substr/* lib_substr/test/test.cpp
 
 print_header "SUCCESS"
