@@ -2,9 +2,9 @@
 [![codecov](https://codecov.io/gh/TimRazumov/Tekhnopark-C/branch/dev-hw-2/graph/badge.svg)](https://codecov.io/gh/TimRazumov/Tekhnopark-C)
 # Tekhnopark-C
 
-### Условие задачи
-
 HW2 at the course of the technopark C/C++
+
+### Условие задачи
 
 ИЗ2 посвящено приобретению навыков системной разработки на C и работе с внешними библиотеками. В качестве результата ИЗ2 ожидается:
 * грамотное разбиение проекта на файлы;
