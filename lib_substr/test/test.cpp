@@ -6,18 +6,18 @@ extern "C" {
 }
 
 #define SUBSTR_LIB "./lib_substr.so"
-#define TEST1 "lib_substr/test/test_case/test1.txt"
-#define TEST2 "lib_substr/test/test_case/test2.txt"
-#define TEST3 "lib_substr/test/test_case/test3.txt"
+#define TEST1 "lib_substr/test/test_case/test1.txt"  // 700 b
+#define TEST2 "lib_substr/test/test_case/test2.txt"  // 1 mb
+#define TEST3 "lib_substr/test/test_case/test3.txt"  // 100 mb
 
 TEST(substr_lib, get_substr_info) {
-    void *dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
+    void* dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
     if (!dl_handle) {
         GTEST_FAIL();
         return;
     }
     chunk_info* (*foo)(const char* const) = NULL;
-    *(void **) (&foo) = dlsym(dl_handle, "get_substr_info");
+    *(void**) (&foo) = dlsym(dl_handle, "get_substr_info");
     if (!foo) {
         GTEST_FAIL();
         dlclose(dl_handle);
@@ -112,15 +112,15 @@ TEST(substr_lib, get_substr_info) {
 }
 
 TEST(substr_lib, comp_direct_parallel_approach) {
-    void *dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
+    void* dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
     if (!dl_handle) {
         GTEST_FAIL();
         return;
     }
     char* (*direct_foo)(const char* const) = NULL;
     char* (*parall_foo)(const char* const) = NULL;
-    *(void **) (&direct_foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file");
-    *(void **) (&parall_foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file_parall");
+    *(void**) (&direct_foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file");
+    *(void**) (&parall_foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file_parall");
     if (!direct_foo || !parall_foo) {
         GTEST_FAIL();
         dlclose(dl_handle);
@@ -132,7 +132,7 @@ TEST(substr_lib, comp_direct_parallel_approach) {
         return;
     }
 
-    char* direct_str = (*direct_foo)(TEST1);  // 700 b
+    char* direct_str = (*direct_foo)(TEST1);
     char* parall_str = (*parall_foo)(TEST1);
     if (!direct_str || !parall_str) {
         GTEST_FAIL() << " Error";
@@ -151,7 +151,7 @@ TEST(substr_lib, comp_direct_parallel_approach) {
     free(direct_str);
     free(parall_str);
 
-    direct_str = (*direct_foo)(TEST2);  // 1 mb
+    direct_str = (*direct_foo)(TEST2);
     parall_str = (*parall_foo)(TEST2);
     if (!direct_str || !parall_str) {
         GTEST_FAIL() << " Error";
@@ -170,7 +170,7 @@ TEST(substr_lib, comp_direct_parallel_approach) {
     free(direct_str);
     free(parall_str);
 
-    direct_str = (*direct_foo)(TEST3);  // 100 mb
+    direct_str = (*direct_foo)(TEST3);
     parall_str = (*parall_foo)(TEST3);
     if (!direct_str || !parall_str) {
         GTEST_FAIL() << " Error";
@@ -192,13 +192,13 @@ TEST(substr_lib, comp_direct_parallel_approach) {
 }
 
 TEST(substr_lib, get_max_substr_without_repeat_from_file) {
-    void *dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
+    void* dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
     if (!dl_handle) {
         GTEST_FAIL();
         return;
     }
     char* (*foo)(const char* const) = NULL;
-    *(void **) (&foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file");
+    *(void**) (&foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file");
     if (!foo) {
         GTEST_FAIL();
         dlclose(dl_handle);
@@ -209,7 +209,7 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file) {
         dlclose(dl_handle);
         return;
     }
-    char* str = (*foo)(TEST1);  // 700 b
+    char* str = (*foo)(TEST1);
     if (!str) {
         GTEST_FAIL() << " Error";
         dlclose(dl_handle);
@@ -223,7 +223,7 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file) {
     }
     free(str);
 
-    str = (*foo)(TEST2);  // 1 mb
+    str = (*foo)(TEST2);
     if (!str) {
         GTEST_FAIL() << " Error";
         dlclose(dl_handle);
@@ -237,7 +237,7 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file) {
     }
     free(str);
 
-    str = (*foo)(TEST3);  // 100 mb
+    str = (*foo)(TEST3);
     if (!str) {
         GTEST_FAIL() << " Error";
         dlclose(dl_handle);
@@ -255,13 +255,13 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file) {
 }
 
 TEST(substr_lib, get_max_substr_without_repeat_from_file_parall) {
-    void *dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
+    void* dl_handle = dlopen(SUBSTR_LIB, RTLD_LAZY);
     if (!dl_handle) {
         GTEST_FAIL();
         return;
     }
     char* (*foo)(const char* const) = NULL;
-    *(void **) (&foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file_parall");
+    *(void**) (&foo) = dlsym(dl_handle, "get_max_substr_without_repeat_from_file_parall");
     if (!foo) {
         GTEST_FAIL();
         dlclose(dl_handle);
@@ -272,7 +272,7 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file_parall) {
         dlclose(dl_handle);
         return;
     }
-    char* str = (*foo)(TEST1);  // 700 b
+    char* str = (*foo)(TEST1);
     if (!str) {
         GTEST_FAIL() << " Error";
         dlclose(dl_handle);
@@ -286,7 +286,7 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file_parall) {
     }
     free(str);
 
-    str = (*foo)(TEST2);  // 1 mb
+    str = (*foo)(TEST2);
     if (!str) {
         GTEST_FAIL() << " Error";
         dlclose(dl_handle);
@@ -300,7 +300,7 @@ TEST(substr_lib, get_max_substr_without_repeat_from_file_parall) {
     }
     free(str);
 
-    str = (*foo)(TEST3);  // 100 mb
+    str = (*foo)(TEST3);
     if (!str) {
         GTEST_FAIL() << " Error";
         dlclose(dl_handle);
