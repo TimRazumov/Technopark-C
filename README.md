@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.com/TimRazumov/Tekhnopark-C.svg?branch=hw-2)](https://travis-ci.com/TimRazumov/Tekhnopark-C)
-[![codecov](https://codecov.io/gh/TimRazumov/Tekhnopark-C/branch/hw-2/graph/badge.svg)](https://codecov.io/gh/TimRazumov/Tekhnopark-C)
-# Tekhnopark-C
+[![Build Status](https://travis-ci.com/TimRazumov/Technopark-C.svg?branch=hw-2)](https://travis-ci.com/TimRazumov/Technopark-C)
+[![codecov](https://codecov.io/gh/TimRazumov/Technopark-C/branch/hw-2/graph/badge.svg)](https://codecov.io/gh/TimRazumov/Technopark-C)
 
 HW2 at the course of the technopark C/C++
 
